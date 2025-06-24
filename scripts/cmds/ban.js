@@ -4,7 +4,7 @@ module.exports = {
   config: {
     name: "ban",
     version: "1.0.0",
-    author: "mirai to goat Converted by SaGor | Original: Joy",
+    author: "Converted by Chatgpt | Original: Joy",
     description: "Ban or unban a user, supports whitelist via GitHub.",
     usage: "[ban/unban] [reply/userID]",
     cooldown: 3,
