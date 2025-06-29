@@ -6,7 +6,7 @@ const { commands, aliases } = global.GoatBot;
 
 module.exports = {
   config: {
-    name: "help",
+    name: "help1",
     aliases:["use", "cmdl"],
     version: "1.18",
     author: "SaGor", 
