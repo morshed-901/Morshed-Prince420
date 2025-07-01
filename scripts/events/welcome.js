@@ -4,7 +4,7 @@ if (!global.temp.welcomeEvent) global.temp.welcomeEvent = {};
 
 module.exports = { config: { name: "welcome", version: "1.7", author: "NTKhang | Modified by Sagor", category: "events" },
 
-langs: { en: { session1: "🌅 morning", session2: "🌞 noon", session3: "🌇 afternoon", session4: "🌙 evening", welcomeMessage: ━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n✨ 𝗦𝗔𝗚𝗢𝗥 𝗕𝗢𝗧 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗘𝗗 ✨\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━\n👑 𝗢𝗪𝗡𝗘𝗥: SAGOR\n🌐 FB: fb.com/SAGOR.DJK.FORYOU\n━━━━━━━━━━━━━━━━━━━━━━━━━━, multiple1: "you", multiple2: "you all", defaultWelcomeMessage: ╔════•✿•════╗\n💐 আসসালামু আলাইকুম 💐\n╚════•✿•════╝\n\n✨ 𝙒𝙚𝙡𝙡𝙘𝙤𝙢𝙚 𝙉𝙚𝙬 𝙈𝙚𝙢𝙗𝙚𝙧 ✨\n\n🌸 {userName}\n🪐 {threadName} গ্রুপে আপনাকে স্বাগতম!\n✨ আপনি এই গ্রুপের {memberNumber} নং মেম্বার।\n\n🌼 আশা করি আপনার {session} সুন্দর যাবে। } },
+langs: { en: { session1: "🌅 morning", session2: "🌞 noon", session3: "🌇 afternoon", session4: "🌙 evening", welcomeMessage: ━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n✨ SAGOR BOT CONNECTED ✨\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━\n👑 OWNER: SAGOR\n🌐 FB: fb.com/SAGOR.DJK.FORYOU\n━━━━━━━━━━━━━━━━━━━━━━━━━━, multiple1: "you", multiple2: "all of you", defaultWelcomeMessage: ✨ Welcome New Member ✨\n\n👤 {userName}\n\nWelcome to {threadName}!\nYou are the {memberNumber}th member of this group.\n\nHave a wonderful {session}! } },
 
 onStart: async ({ threadsData, message, event, api, getLang }) => { if (event.logMessageType !== "log:subscribe") return;
 
@@ -53,21 +53,23 @@ global.temp.welcomeEvent[threadID].joinTimeout = setTimeout(async () => {
   if (userName.length === 0) return;
 
   let { welcomeMessage = getLang("defaultWelcomeMessage") } = threadData.data;
-  const form = { mentions: welcomeMessage.includes("{userNameTag}") ? mentions : null };
+  const sessionText =
+    hours <= 10 ? getLang("session1") :
+    hours <= 12 ? getLang("session2") :
+    hours <= 18 ? getLang("session3") :
+    getLang("session4");
 
   welcomeMessage = welcomeMessage
-    .replace(/\{userName\}|\{userNameTag\}/g, userName.join(", "))
+    .replace(/\{userName\}/g, userName.join(", "))
     .replace(/\{boxName\}|\{threadName\}/g, threadName)
     .replace(/\{multiple\}/g, multiple ? getLang("multiple2") : getLang("multiple1"))
-    .replace(/\{session\}/g,
-      hours <= 10 ? getLang("session1") :
-      hours <= 12 ? getLang("session2") :
-      hours <= 18 ? getLang("session3") :
-      getLang("session4")
-    )
+    .replace(/\{session\}/g, sessionText)
     .replace(/\{memberNumber\}/g, threadData.members.length.toString());
 
-  form.body = welcomeMessage;
+  const form = {
+    body: welcomeMessage,
+    mentions: welcomeMessage.includes("{userNameTag}") ? mentions : null
+  };
 
   if (threadData.data.welcomeAttachment) {
     const files = threadData.data.welcomeAttachment;
