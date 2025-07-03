@@ -2,9 +2,9 @@ const { getTime, drive } = global.utils;
 
 if (!global.temp.welcomeEvent) global.temp.welcomeEvent = {};
 
-module.exports = { config: { name: "welcome", version: "1.7", author: "NTKhang | Modified by Sagor", category: "events" },
+module.exports = { config: { name: "welcome", version: "1.7", author: "NTKhang | Modified by Prince", category: "events" },
 
-langs: { en: { session1: "🌅 morning", session2: "🌞 noon", session3: "🌇 afternoon", session4: "🌙 evening", welcomeMessage: ━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n✨ SAGOR BOT CONNECTED ✨\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━\n👑 OWNER: SAGOR\n🌐 FB: fb.com/SAGOR.DJK.FORYOU\n━━━━━━━━━━━━━━━━━━━━━━━━━━, multiple1: "you", multiple2: "all of you", defaultWelcomeMessage: ✨ Welcome New Member ✨\n\n👤 {userName}\n\nWelcome to {threadName}!\nYou are the {memberNumber}th member of this group.\n\nHave a wonderful {session}! } },
+langs: { en: { session1: "🌅 morning", session2: "🌞 noon", session3: "🌇 afternoon", session4: "🌙 evening", welcomeMessage: ━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n✨ PRINCE BOT CONNECTED ✨\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━\n👑 OWNER: PRINCE\n🌐 FB: fb.com/PRINCE.DJK.FORYOU\n━━━━━━━━━━━━━━━━━━━━━━━━━━, multiple1: "you", multiple2: "all of you", defaultWelcomeMessage: ✨ Welcome New Member ✨\n\n👤 {userName}\n\nWelcome to {threadName}!\nYou are the {memberNumber}th member of this group.\n\nHave a wonderful {session}! } },
 
 onStart: async ({ threadsData, message, event, api, getLang }) => { if (event.logMessageType !== "log:subscribe") return;
 
