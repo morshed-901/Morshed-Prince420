@@ -1,6 +1,6 @@
 module.exports = {
 	config: {
-			name: "SaGor",
+			name: "Prince",
 			version: "1.0",
 			author: "Jaychris Garcia",
 			countDown: 5,
@@ -15,6 +15,6 @@ onChat: async function({
 	message,
 	getLang
 }) {
-	if (event.body && event.body.toLowerCase() == "sagor") return message.reply("এত সাগর সাগর করিস না পারলে তর ভবিষ্যতের বউটা সাগরকে দিস 😳");
+	if (event.body && event.body.toLowerCase() == "prince") return message.reply("এত প্রিন্স প্রিন্স করো কেনো😳");
 }
 };
